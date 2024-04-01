@@ -1,7 +1,7 @@
-
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
+val postgresql_driver_version: String by project
 
 plugins {
     kotlin("jvm") version "1.9.23"
@@ -34,4 +34,11 @@ dependencies {
     implementation("io.ktor:ktor-server-config-yaml:2.3.9")
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
+    implementation("org.postgresql:postgresql:$postgresql_driver_version")
+}
+ktor {
+    fatJar {
+        archiveFileName.set("fat.jar")
+    }
 }
