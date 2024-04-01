@@ -4,6 +4,3 @@ ktor:
             - com.unitedApi.ApplicationKt.module
     deployment:
         port: 8084
-storage:
-    driverClassName: "org.postgresql.Driver"
-    jdbcURL: "jdbc:postgresql://db:5432/ktorjournal?user=postgres"
