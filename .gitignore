@@ -34,4 +34,6 @@ out/
 
 ### VS Code ###
 .vscode/
-/tmp/db
+
+/tmp/db/
+
