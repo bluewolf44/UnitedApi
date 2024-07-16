@@ -1,6 +1,8 @@
-create table if not exists Customer
+DROP TABLE IF EXISTS Customer;
+
+create table Customer
 (
-    CustomerId:Int(16)
-    Name:Char(100)
-    Address:Char(500)
-)
+    CustomerId Int,
+    Name Char(100),
+    Address Char(500)
+);
