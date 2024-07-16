@@ -1,6 +1,8 @@
 services:
   web:
     build: .
+    volumes:
+      - ./build/libs/fat.jar:/app/ktor-docker-sample.jar
     ports:
       - "8084:8084"
     depends_on:
@@ -17,4 +19,4 @@ services:
       - "5432:5432"
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
-      interval: 1s
+      interval: 5s
