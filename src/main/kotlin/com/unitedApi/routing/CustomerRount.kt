@@ -9,7 +9,7 @@ fun Route.CustomerRounting()
 {
     route("customer")
     {
-        get("/") {
+        get("") {
             call.respond(customerDAO.getCustomers())
         }
     }
