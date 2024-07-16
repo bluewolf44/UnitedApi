@@ -1,6 +1,5 @@
 package com.unitedApi.routing
 
-import com.unitedApi.dao.SalesDAO
 import com.unitedApi.dao.salesDao
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -11,9 +10,8 @@ fun Application.configureRouting() {
         //Chnage again
         get("/") {
             call.respondText("Hello World!")
+            //call.respondText("Cheese")
         }
-        get("/Test") {
-            call.respond(salesDao.getSales())
-        }
+        CustomerRounting()
     }
 }
