@@ -12,6 +12,7 @@ services:
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+      - ./tmp/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_DB: ktorjournal
       POSTGRES_HOST_AUTH_METHOD: trust
