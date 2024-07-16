@@ -1,8 +1,6 @@
 package com.unitedApi.model
 
-class WorkOrder {
-    var workOrderId = String
-    var seqHeaderId = String
-    var soHeaderID = String
-    var quanity = Int
-}
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class WorkOrder (var workOrderId:String,var seqHeaderId:String,var soHeaderID:String,var quanity:Int)

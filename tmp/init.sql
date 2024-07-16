@@ -11,7 +11,7 @@ drop table if exists Customer;
 
 create table Customer
 (
-    customerId Int PRIMARY KEY,
+    customerId VarChar(8) PRIMARY Key,
     name VarChar(100) not null,
     address VarChar(500) not null
 );

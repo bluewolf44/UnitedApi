@@ -1,6 +1,6 @@
 package com.unitedApi.model
 
-class SequenceHeader {
-    val seqHeaderId = String
-    val partID = String
-}
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class SequenceHeader(val seqHeaderId:String,val partID:String)

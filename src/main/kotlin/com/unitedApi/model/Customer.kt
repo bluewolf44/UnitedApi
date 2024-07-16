@@ -1,7 +1,6 @@
 package com.unitedApi.model
 
-class Customer {
-    val customerId = Int
-    val name = String
-    val address = String
-}
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Customer(val customerId:String,val name:String,val address:String)

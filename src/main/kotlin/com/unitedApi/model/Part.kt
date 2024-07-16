@@ -1,6 +1,6 @@
 package com.unitedApi.model
 
-class Part {
-    val PartID = String
-    val Inventory = String
-}
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Part(val PartId:String,val inventory:Int,val name:String)

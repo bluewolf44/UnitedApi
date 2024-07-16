@@ -6,7 +6,7 @@ import kotlinx.coroutines.runBlocking
 class CustomerImpDAO:CustomerDAO{
     override suspend fun getCustomers(): List<Customer> {
         val statement = dbConnection.createStatement()
-        val resultSet = statement.executeQuery("SELECT * FROM customer")
+        val resultSet = statement.executeQuery("SELECT * FROM Customer")
         val customers = mutableListOf<Customer>()
 //        while (resultSet.next())
 //        {

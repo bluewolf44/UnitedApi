@@ -52,7 +52,7 @@ class Part
 
 class Customer
 {
-    * CustomerId:Int
+    * CustomerId:Char(6)
     --
     * Name:Char(100)
     * Address:Char(500)
@@ -92,14 +92,3 @@ WorkedOn }o--|| WorkOrder
 WorkedOn }o--|| Staff
 
 @enduml
-
-drop table if exists WorkedOn;
-drop table if exists SequenceLine;
-drop table if exists WorkOrder;
-drop table if exists SequenceHeader;
-drop table if exists SaleOrderLine;
-drop table if exists SaleOrderHeader;
-drop table if exists Staff;
-drop table if exists WorkStation;
-drop table if exists Part;
-drop table if exists Customer;

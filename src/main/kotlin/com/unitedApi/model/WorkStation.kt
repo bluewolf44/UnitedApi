@@ -1,5 +1,6 @@
 package com.unitedApi.model
 
-class WorkStation {
-    val name = String
-}
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class WorkStation (val name:String)
