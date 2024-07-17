@@ -37,8 +37,8 @@ create table Staff
 
 create table SaleOrderHeader
 (
-	soHeaderID VarChar(6) PRIMARY key ,
-	CustomerID VarChar(8) not null references Customer (customerId)
+	soHeaderId VarChar(6) PRIMARY key ,
+	customerId VarChar(8) not null references Customer (customerId)
 );
 
 create table SaleOrderLine
