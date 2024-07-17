@@ -9,4 +9,4 @@ val dbConnection: Connection = DriverManager.getConnection(
     "postgres","postgres"
 )
 
-val customerDAO: CustomerDAO = CustomerImpDAO().apply { runBlocking {} }
+val customerDAO: CustomerDAO = CustomerImpDAO(dbConnection).apply { runBlocking {} }

@@ -4,5 +4,9 @@ import com.unitedApi.model.Customer
 
 interface CustomerDAO {
 
-    suspend fun getCustomers() : List<Customer>
+
+
+    fun getCustomers() : List<Customer>
+    fun createCustomer(customer:Customer)
+    fun getCustomer(id:String) : Customer
 }

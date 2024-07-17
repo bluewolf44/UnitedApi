@@ -34,6 +34,11 @@ dependencies {
     implementation("io.ktor:ktor-server-config-yaml:2.3.9")
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("org.testcontainers:postgresql:1.19.8")
+    testImplementation("org.testcontainers:testcontainers:1.19.8")
+    testImplementation("org.testcontainers:junit-jupiter:1.19.8")
+
+
 
     implementation("org.postgresql:postgresql:$postgresql_driver_version")
 }
