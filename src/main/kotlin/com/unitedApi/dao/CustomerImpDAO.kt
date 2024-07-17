@@ -5,8 +5,6 @@ import java.sql.Connection
 
 class CustomerImpDAO(val connection: Connection):CustomerDAO{
 
-
-
     override fun getCustomers(): List<Customer> {
         val statement = connection.createStatement()
         val resultSet = statement.executeQuery("SELECT * FROM Customer")
