@@ -43,10 +43,11 @@ create table SaleOrderHeader
 
 create table SaleOrderLine
 (
-	soLineId VarChar(6) PRIMARY KEY,
-	soHeaderId VarChar(6) not null references SaleOrderHeader (soHeaderID),
+	soLineId VarChar(6),
+	soHeaderId VarChar(6) references SaleOrderHeader (soHeaderID),
 	dateDue Date not null,
-	partID VarChar(6) not null references Part(partId)
+	partID VarChar(6) not null references Part(partId),
+	PRIMARY KEY (soLineId,soHeaderId)
 );
 
 create table SequenceHeader
@@ -59,8 +60,10 @@ create table WorkOrder
 (
 	workOrderId VarChar(8) PRIMARY KEY,
 	seqHeaderId VarChar(6) not null REFERENCES SequenceHeader (seqHeaderId),
-	soLineId VarChar(6) not null REFERENCES SaleOrderLine (soLineId),
-	quanity Int not null
+	soLineId VarChar(6) not null,
+	soHeaderId VarChar(6) not null,
+	quanity Int not null,
+	FOREIGN KEY (soLineId,soHeaderId) REFERENCES SaleOrderLine (soLineId,soHeaderId)
 );
 
 create table SequenceLine

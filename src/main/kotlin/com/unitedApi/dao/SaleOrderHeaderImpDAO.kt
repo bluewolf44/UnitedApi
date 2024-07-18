@@ -20,7 +20,7 @@ class SaleOrderHeaderImpDAO(val connection:Connection):SaleOrderHeaderDAO {
 
     override fun createSaleOrderHeader(saleOrderHeader: SaleOrderHeader) {
         val  statement = connection.prepareStatement("INSERT into SaleOrderHeader(soHeaderID,customerID) values(?,?)")
-        statement.setString(1,saleOrderHeader.seqHeaderId)
+        statement.setString(1,saleOrderHeader.soHeaderId)
         statement.setString(2,saleOrderHeader.customerId)
         statement.executeUpdate()
     }

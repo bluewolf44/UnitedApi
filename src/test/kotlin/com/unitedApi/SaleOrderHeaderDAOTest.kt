@@ -63,7 +63,7 @@ class SaleOrderHeaderDAOTest {
 
     @Test
     fun getSaleOrderHeader() {
-        assertEquals(saleOrderHeaderDAO.getSaleOrderHeader(saleOrderHeader1.seqHeaderId),saleOrderHeader1)
+        assertEquals(saleOrderHeaderDAO.getSaleOrderHeader(saleOrderHeader1.soHeaderId),saleOrderHeader1)
     }
 
     @Test
