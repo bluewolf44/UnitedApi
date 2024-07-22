@@ -35,8 +35,7 @@ class SaleOrderLineImpDAOTest {
     val part2 = Part("2", 150, "Peanut butter")
     val saleOrderLine1 = SaleOrderLine("1",saleOrderHeader1.soHeaderId, Date.valueOf(LocalDate.now()),part1.PartId)
     val saleOrderLine2 = SaleOrderLine("1",saleOrderHeader2.soHeaderId, Date.valueOf(LocalDate.now()),part2.PartId)
-    val saleOrderLine3 = SaleOrderLine("1",saleOrderHeader1.soHeaderId, Date.valueOf(LocalDate.now()),part2.PartId)
-
+    val saleOrderLine3 = SaleOrderLine("2",saleOrderHeader1.soHeaderId, Date.valueOf(LocalDate.now()),part2.PartId)
 
     @JvmField
     @Rule

@@ -68,16 +68,19 @@ create table WorkOrder
 
 create table SequenceLine
 (
-	seqLineId VarChar(10) PRIMARY KEY,
-	seqHeaderId VarChar(6) not null references SequenceHeader (seqHeaderId),
-	workStation VarChar(6) not null references WorkStation(name)
+	seqLineId VarChar(10),
+	seqHeaderId VarChar(6) references SequenceHeader (seqHeaderId),
+	workStation VarChar(50) not null references WorkStation(name),
+	PRIMARY KEY(seqLineId,seqHeaderId)
 );
 
 create table WorkedOn
 (
 	staffId char(8) references Staff (staffId),
-	seqLineId char(10) references SequenceLine (seqLineId),
+	seqHeaderId VarChar(6),
+	seqLineId char(10),
 	workOrderId char(8) references WorkOrder(workOrderId),
 
-	PRIMARY key (staffId,seqLineId,workOrderId)
+	PRIMARY key (staffId,seqHeaderId,seqLineId,workOrderId),
+	FOREIGN KEY (seqHeaderId,seqLineId) REFERENCES SequenceLine (seqHeaderId,seqLineId)
 );
