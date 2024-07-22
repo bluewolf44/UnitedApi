@@ -38,7 +38,7 @@ class CustomerDAOTest {
             "jdbc:postgresql://"+postgreContainer.getHost()+":"+postgreContainer.getFirstMappedPort()+"/"+postgreContainer.getDatabaseName(),
             postgreContainer.getUsername(),postgreContainer.getPassword()
         )
-        customerDAO = CustomerImpDAO(dbConnection).apply { runBlocking {} }
+        customerDAO = CustomerImpDAO(dbConnection)
 
         customerDAO.createCustomer(customer)
 

@@ -5,7 +5,6 @@ import com.unitedApi.model.Customer
 import com.unitedApi.model.Part
 import com.unitedApi.model.SaleOrderHeader
 import com.unitedApi.model.SaleOrderLine
-import io.ktor.server.util.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -19,7 +18,7 @@ import java.sql.Date
 import java.sql.DriverManager
 import java.time.LocalDate
 
-class SaleOrderLineImpDAOTest {
+class SaleOrderLineDAOTest {
 
     lateinit var saleOrderHeaderDAO: SaleOrderHeaderDAO
     lateinit var customerDAO: CustomerImpDAO
@@ -54,10 +53,10 @@ class SaleOrderLineImpDAOTest {
             "jdbc:postgresql://" + postgreContainer.getHost() + ":" + postgreContainer.getFirstMappedPort() + "/" + postgreContainer.getDatabaseName(),
             postgreContainer.getUsername(), postgreContainer.getPassword()
         )
-        saleOrderHeaderDAO = SaleOrderHeaderImpDAO(dbConnection).apply { runBlocking {  } }
-        customerDAO = CustomerImpDAO(dbConnection).apply { runBlocking {  } }
-        saleOrderLineDAO = SaleOrderLineImpDAO(dbConnection).apply { runBlocking {  } }
-        partDAO = PartImpDAO(dbConnection).apply { runBlocking {  } }
+        saleOrderHeaderDAO = SaleOrderHeaderImpDAO(dbConnection)
+        customerDAO = CustomerImpDAO(dbConnection)
+        saleOrderLineDAO = SaleOrderLineImpDAO(dbConnection)
+        partDAO = PartImpDAO(dbConnection)
 
         customerDAO.createCustomer(customer1)
         customerDAO.createCustomer(customer2)

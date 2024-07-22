@@ -39,7 +39,7 @@ class PartDAOTest {
             "jdbc:postgresql://" + postgreContainer.getHost() + ":" + postgreContainer.getFirstMappedPort() + "/" + postgreContainer.getDatabaseName(),
             postgreContainer.getUsername(), postgreContainer.getPassword()
         )
-        partDAO = PartImpDAO(dbConnection).apply { runBlocking {} }
+        partDAO = PartImpDAO(dbConnection)
 
         partDAO.createPart(part)
     }

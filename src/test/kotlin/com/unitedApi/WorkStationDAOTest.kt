@@ -3,7 +3,6 @@ package com.unitedApi
 import com.unitedApi.dao.WorkStationDAO
 import com.unitedApi.dao.WorkStationImpDAO
 import com.unitedApi.model.WorkStation
-import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
@@ -14,7 +13,7 @@ import org.testcontainers.utility.DockerImageName
 import java.sql.Connection
 import java.sql.DriverManager
 
-class WorkStationImpDAOTest {
+class WorkStationDAOTest {
 
     lateinit var workStationDAO:WorkStationDAO
     lateinit var dbConnection: Connection

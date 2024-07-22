@@ -46,8 +46,8 @@ class SaleOrderHeaderDAOTest {
             "jdbc:postgresql://" + postgreContainer.getHost() + ":" + postgreContainer.getFirstMappedPort() + "/" + postgreContainer.getDatabaseName(),
             postgreContainer.getUsername(), postgreContainer.getPassword()
         )
-        saleOrderHeaderDAO = SaleOrderHeaderImpDAO(dbConnection).apply { runBlocking {  } }
-        customerDAO = CustomerImpDAO(dbConnection).apply { runBlocking {  } }
+        saleOrderHeaderDAO = SaleOrderHeaderImpDAO(dbConnection)
+        customerDAO = CustomerImpDAO(dbConnection)
 
         customerDAO.createCustomer(customer1)
         customerDAO.createCustomer(customer2)

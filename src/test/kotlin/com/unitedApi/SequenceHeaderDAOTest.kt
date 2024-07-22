@@ -43,8 +43,8 @@ class SequenceHeaderDAOTest {
             "jdbc:postgresql://" + postgreContainer.getHost() + ":" + postgreContainer.getFirstMappedPort() + "/" + postgreContainer.getDatabaseName(),
             postgreContainer.getUsername(), postgreContainer.getPassword()
         )
-        partDAO = PartImpDAO(dbConnection).apply { runBlocking {} }
-        sequenceHeaderDAO = SequenceHeaderImpDAO(dbConnection).apply { runBlocking {  } }
+        partDAO = PartImpDAO(dbConnection)
+        sequenceHeaderDAO = SequenceHeaderImpDAO(dbConnection)
 
         partDAO.createPart(part)
         sequenceHeaderDAO.createSequenceHeader(sequenceHeader)
