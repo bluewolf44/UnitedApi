@@ -1,6 +1,8 @@
 package com.unitedApi.model
 
 import kotlinx.serialization.Serializable
+import java.sql.Date
+import java.time.LocalDate
 
 @Serializable
-data class WorkedOn (val staffID:String, val seqLineID:String, val workOrderId:String)
+data class WorkedOn (val staffId:String, val seqHeaderId:String,val seqLineId:String, val workOrderId:String)

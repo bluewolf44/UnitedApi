@@ -76,10 +76,10 @@ create table SequenceLine
 
 create table WorkedOn
 (
-	staffId char(8) references Staff (staffId),
+	staffId VarChar(8) references Staff (staffId),
 	seqHeaderId VarChar(6),
-	seqLineId char(10),
-	workOrderId char(8) references WorkOrder(workOrderId),
+	seqLineId VarChar(10),
+	workOrderId VarChar(50) references WorkOrder(workOrderId),
 
 	PRIMARY key (staffId,seqHeaderId,seqLineId,workOrderId),
 	FOREIGN KEY (seqHeaderId,seqLineId) REFERENCES SequenceLine (seqHeaderId,seqLineId)
