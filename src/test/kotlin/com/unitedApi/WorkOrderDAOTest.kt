@@ -25,11 +25,11 @@ class WorkOrderDAOTest {
     lateinit var dbConnection: Connection
 
     val part = Part("1", 50, "Cheese Balls")
-    val sequenceHeader = SequenceHeader("1",part.PartId)
+    val sequenceHeader = SequenceHeader("1",part.partId)
     val customer = Customer("1","Dave","69th street")
     val saleOrderHeader = SaleOrderHeader("1",customer.customerId)
-    val saleOrderLine1 = SaleOrderLine("1",saleOrderHeader.soHeaderId, Date.valueOf(LocalDate.now()),part.PartId)
-    val saleOrderLine2 = SaleOrderLine("2",saleOrderHeader.soHeaderId, Date.valueOf(LocalDate.now()),part.PartId)
+    val saleOrderLine1 = SaleOrderLine("1",saleOrderHeader.soHeaderId, Date.valueOf(LocalDate.now()),part.partId)
+    val saleOrderLine2 = SaleOrderLine("2",saleOrderHeader.soHeaderId, Date.valueOf(LocalDate.now()),part.partId)
     val workOrder1 = WorkOrder("1",sequenceHeader.seqHeaderId,saleOrderLine1.soHeaderId,saleOrderLine1.soLineId,2)
     val workOrder2 = WorkOrder("2",sequenceHeader.seqHeaderId,saleOrderLine2.soHeaderId,saleOrderLine2.soLineId,4)
     val workOrder3 = WorkOrder("3",sequenceHeader.seqHeaderId,saleOrderLine1.soHeaderId,saleOrderLine1.soLineId,6)

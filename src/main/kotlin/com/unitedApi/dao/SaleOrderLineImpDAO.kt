@@ -2,6 +2,7 @@ package com.unitedApi.dao
 
 import com.unitedApi.model.Customer
 import com.unitedApi.model.SaleOrderLine
+import com.unitedApi.model.mappingDB
 import java.sql.Connection
 import java.sql.Date
 
@@ -9,12 +10,7 @@ class SaleOrderLineImpDAO(val connection: Connection):SaleOrderLineDAO {
     override fun getSaleOrderLines(): List<SaleOrderLine> {
         val statement = connection.createStatement()
         val resultSet = statement.executeQuery("SELECT * FROM SaleOrderLine")
-        val lines = mutableListOf<SaleOrderLine>()
-        while (resultSet.next())
-        {
-            lines.add(SaleOrderLine(resultSet.getString("soLineId"),resultSet.getString("soHeaderId"),resultSet.getDate("dateDue"),resultSet.getString("partID")))
-        }
-        return lines
+        return mappingDB(resultSet,::SaleOrderLine)
     }
 
     override fun createSaleOrderLine(saleOrderLine: SaleOrderLine) {
@@ -31,19 +27,13 @@ class SaleOrderLineImpDAO(val connection: Connection):SaleOrderLineDAO {
         statement.setString(1,lineId)
         statement.setString(2,headerId)
         val resultSet = statement.executeQuery()
-        resultSet.next()
-        return SaleOrderLine(resultSet.getString("soLineId"),resultSet.getString("soHeaderId"),resultSet.getDate("dateDue"),resultSet.getString("partID"))
+        return mappingDB(resultSet,::SaleOrderLine)[0]
     }
 
     override fun getSaleOrderLinesByHeader(id: String): List<SaleOrderLine> {
         val statement = connection.prepareStatement("SELECT * FROM SaleOrderLine where soHeaderId = ?")
         statement.setString(1,id)
         val resultSet = statement.executeQuery()
-        val lines = mutableListOf<SaleOrderLine>()
-        while (resultSet.next())
-        {
-            lines.add(SaleOrderLine(resultSet.getString("soLineId"),resultSet.getString("soHeaderId"),resultSet.getDate("dateDue"),resultSet.getString("partID")))
-        }
-        return lines
+        return mappingDB(resultSet,::SaleOrderLine)
     }
 }

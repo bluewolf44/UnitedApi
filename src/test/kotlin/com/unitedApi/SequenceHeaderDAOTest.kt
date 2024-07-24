@@ -24,7 +24,7 @@ class SequenceHeaderDAOTest {
     lateinit var dbConnection: Connection
 
     val part = Part("1", 50, "Cheese Balls")
-    val sequenceHeader = SequenceHeader("1",part.PartId)
+    val sequenceHeader = SequenceHeader("1",part.partId)
 
     @JvmField
     @Rule

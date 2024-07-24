@@ -53,7 +53,7 @@ class PartDAOTest {
     @Test
     fun getPart()
     {
-        assertEquals(partDAO.getPart(part.PartId),part)
+        assertEquals(partDAO.getPart(part.partId),part)
     }
 
 }

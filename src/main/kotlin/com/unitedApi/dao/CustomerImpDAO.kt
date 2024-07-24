@@ -1,6 +1,7 @@
 package com.unitedApi.dao
 
 import com.unitedApi.model.Customer
+import com.unitedApi.model.mappingDB
 import java.sql.Connection
 
 class CustomerImpDAO(val connection: Connection):CustomerDAO{
@@ -8,12 +9,7 @@ class CustomerImpDAO(val connection: Connection):CustomerDAO{
     override fun getCustomers(): List<Customer> {
         val statement = connection.createStatement()
         val resultSet = statement.executeQuery("SELECT * FROM Customer")
-        val customers = mutableListOf<Customer>()
-        while (resultSet.next())
-        {
-            customers.add(Customer(resultSet.getString("customerId"),resultSet.getString("name"),resultSet.getString("address")))
-        }
-        return customers
+        return mappingDB(resultSet,::Customer)
     }
 
     override fun createCustomer(customer: Customer) {
@@ -28,7 +24,6 @@ class CustomerImpDAO(val connection: Connection):CustomerDAO{
         val statement = connection.prepareStatement("SELECT * FROM Customer where customerId = ?")
         statement.setString(1,id)
         val resultSet = statement.executeQuery()
-        resultSet.next()
-        return Customer(resultSet.getString("customerId"),resultSet.getString("name"),resultSet.getString("address"))
+        return mappingDB(resultSet,::Customer)[0]
     }
 }

@@ -24,8 +24,8 @@ class SequenceLineDAOTest {
     lateinit var dbConnection: Connection
 
     val part = Part("1", 50, "Cheese Balls")
-    val sequenceHeader1 = SequenceHeader("1",part.PartId)
-    val sequenceHeader2 = SequenceHeader("2",part.PartId)
+    val sequenceHeader1 = SequenceHeader("1",part.partId)
+    val sequenceHeader2 = SequenceHeader("2",part.partId)
     val workStation1 = WorkStation("Cheese Chaser")
     val workStation2 = WorkStation("Leaf Eater")
     val sequenceLine1 = SequenceLine("1",sequenceHeader1.seqHeaderId,workStation1.name)

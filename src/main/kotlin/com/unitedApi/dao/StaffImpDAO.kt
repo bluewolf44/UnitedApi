@@ -2,18 +2,14 @@ package com.unitedApi.dao
 
 import com.unitedApi.model.SequenceHeader
 import com.unitedApi.model.Staff
+import com.unitedApi.model.mappingDB
 import java.sql.Connection
 
 class StaffImpDAO(val connection: Connection):StaffDAO {
     override fun getStaffs(): List<Staff> {
         val statement = connection.createStatement()
         val resultSet = statement.executeQuery("SELECT * FROM Staff")
-        val staffs = mutableListOf<Staff>()
-        while (resultSet.next())
-        {
-            staffs.add(Staff(resultSet.getString("staffId"),resultSet.getString("name")))
-        }
-        return staffs
+        return mappingDB(resultSet,::Staff)
     }
 
     override fun createStaff(staff: Staff) {
@@ -27,7 +23,6 @@ class StaffImpDAO(val connection: Connection):StaffDAO {
         val statement = connection.prepareStatement("SELECT * FROM Staff where staffId = ?")
         statement.setString(1,id)
         val resultSet = statement.executeQuery()
-        resultSet.next()
-        return Staff(resultSet.getString("staffId"),resultSet.getString("name"))
+        return mappingDB(resultSet,::Staff)[0]
     }
 }

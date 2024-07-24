@@ -2,18 +2,14 @@ package com.unitedApi.dao
 
 import com.unitedApi.model.SequenceHeader
 import com.unitedApi.model.WorkOrder
+import com.unitedApi.model.mappingDB
 import java.sql.Connection
 
 class WorkOrderImpDAO(val connection: Connection):WorkOrderDAO {
     override fun getWorkOrders(): List<WorkOrder> {
         val statement = connection.createStatement()
         val resultSet = statement.executeQuery("SELECT * FROM WorkOrder")
-        val orders = mutableListOf<WorkOrder>()
-        while (resultSet.next())
-        {
-            orders.add(WorkOrder(resultSet.getString("workOrderId"),resultSet.getString("seqHeaderId"),resultSet.getString("soHeaderID"),resultSet.getString("soLineId"),resultSet.getInt("quanity")))
-        }
-        return orders
+        return mappingDB(resultSet, ::WorkOrder)
     }
 
     override fun createWorkOrder(workOrder: WorkOrder) {
@@ -30,8 +26,7 @@ class WorkOrderImpDAO(val connection: Connection):WorkOrderDAO {
         val statement = connection.prepareStatement("SELECT * FROM WorkOrder where workOrderId = ?")
         statement.setString(1,id)
         val resultSet = statement.executeQuery()
-        resultSet.next()
-        return WorkOrder(resultSet.getString("workOrderId"),resultSet.getString("seqHeaderId"),resultSet.getString("soHeaderID"),resultSet.getString("soLineId"),resultSet.getInt("quanity"))
+        return mappingDB(resultSet, ::WorkOrder)[0]
     }
 
     override fun getWorkOrderBySaleLine(headerId: String,lineId:String): List<WorkOrder> {
@@ -39,11 +34,6 @@ class WorkOrderImpDAO(val connection: Connection):WorkOrderDAO {
         statement.setString(1,headerId)
         statement.setString(2,lineId)
         val resultSet = statement.executeQuery()
-        val orders = mutableListOf<WorkOrder>()
-        while (resultSet.next())
-        {
-            orders.add(WorkOrder(resultSet.getString("workOrderId"),resultSet.getString("seqHeaderId"),resultSet.getString("soHeaderID"),resultSet.getString("soLineId"),resultSet.getInt("quanity")))
-        }
-        return orders
+        return mappingDB(resultSet, ::WorkOrder)
     }
 }
