@@ -1,0 +1,94 @@
+@startuml unitedAPI
+skinparam linetype polyline
+skinparam linetype ortho
+
+class WorkOrder
+{
+    * WorkOrderId:Char(8)
+    --
+    * SeqHeaderId:Char(6)\n<FK:SequenceHeader>
+    * SoLineId:Char(6)\n<FK:SaleOrderLine>
+    * Quanity:Int
+}
+
+class SaleOrderHeader
+{
+    * SoHeaderId:Char(6)
+    --
+    * CustomerId:Int <FK:Customer>
+}
+
+class SaleOrderLine
+{
+    * SoLineId:Char(6)
+    --
+    * SoHeaderId:Char(6)\n<FK:SaleOrderHeader>
+    * DateDue:Date
+    * PartId:char(6) <FK:Part>
+}
+
+class SequenceHeader
+{
+    * SeqHeaderId:Char(6)
+    --
+    * PartId:char(6) <FK:Part>
+}
+
+class SequenceLine
+{
+    * SeqLineId:char(10)
+    --
+    * SeqHeaderId:char(6)\n<FK:SequenceHeader>
+    * WorkStation:char(6)\n<FK:WorkStation>
+}
+
+class Part
+{
+    * PartId Char(6)
+    --
+    * Inventory:Int
+    * Name:Char(100)
+}
+
+class Customer
+{
+    * CustomerId:Char(6)
+    --
+    * Name:Char(100)
+    * Address:Char(500)
+}
+
+class Staff
+{
+    * StaffID:Char(6)
+    --
+    * Name:Char(100)
+}
+
+class WorkedOn
+{
+    * StaffID:Char(8)\n<FK:Staff>
+    * SeqLineId:char(10)\n<FK:SequenceLine>
+    * WorkOrderId:char(8)\n<FK:WorkOrder>
+    --
+}
+
+class WorkStation
+{
+    * Name:Char(50)
+    --
+}
+
+SaleOrderHeader ||--o{ SaleOrderLine
+SequenceHeader ||--o{ SequenceLine
+WorkOrder }o--|| SequenceHeader
+SequenceHeader }o--|| Part
+SequenceLine }o--|| WorkStation
+SaleOrderHeader }o--|| Customer
+WorkOrder }o--|| SaleOrderLine
+SaleOrderLine }o--|| Part
+WorkedOn }o--|| SequenceLine
+WorkedOn }o--|| WorkOrder
+WorkedOn }o--|| Staff
+
+@enduml
